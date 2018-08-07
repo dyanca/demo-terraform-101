@@ -18,6 +18,9 @@ variable "num_webs" {
   default = "1"
 }
 
+variable "public_key" {}
+variable "private_key" {}
+
 provider "aws" {
   version    = "~> 1.5"
   access_key = "${var.access_key}"
@@ -33,6 +36,8 @@ module "server" {
   subnet_id             = "${var.subnet_id}"
   vpc_security_group_id = "${var.vpc_security_group_id}"
   identity              = "${var.identity}"
+  public_key            = "${var.public_key}"
+  private_key           = "${var.private_key}"
 }
 
 output "public_ip" {
